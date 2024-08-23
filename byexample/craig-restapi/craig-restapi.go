@@ -40,11 +40,11 @@ func getTodos(w http.ResponseWriter, r *http.Request) {
 	case "POST":
 		{
 			var item Todo
-			var bytes []byte
+			// var bytes []byte = make([]byte, 512)
 
-			//Why does this read 0 bytes??
-			size, readerr := r.Body.Read(bytes[:])
-			log.Printf("Error: %v, Size: %v", readerr, size)
+			// // test read, works now because bytes slice is backed I guess
+			// size, readerr := r.Body.Read(bytes)
+			// log.Printf("Error: %v, Size: %v", readerr, size)
 
 			err := json.NewDecoder(r.Body).Decode(&item)
 			log.Printf("Error: %v, Body: %v", err, item)
